@@ -20,10 +20,12 @@ button.addEventListener('click', (e) => {
   document.querySelector('#form').classList.remove('d-none');
 });
 
+/* eslint-disable no-use-before-define */
 function updateBookList() {
   display.innerHTML = '';
   bookArray.forEach((book, index) => createNewBook(book, index));
 }
+/* eslint-enable no-use-before-define */
 
 function DeleteBook(e) {
   const item = e.target;
@@ -39,7 +41,7 @@ function EndBook(e) {
   book.status = !book.status;
   updateBookList();
 }
-/* eslint-disable no-use-before-define */
+
 function createNewBook(book, index) {
   const AllBooks = document.createElement('div');
   AllBooks.classList.add('card');
@@ -79,7 +81,6 @@ function createNewBook(book, index) {
   endbutton.addEventListener('click', EndBook);
   deletebutton.addEventListener('click', DeleteBook);
 }
-/* eslint-enable no-use-before-define */
 
 function addBookToLibrary(e) {
   e.preventDefault();
