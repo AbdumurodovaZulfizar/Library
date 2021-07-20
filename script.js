@@ -20,9 +20,25 @@ button.addEventListener( "click", (e)=> {
   document.querySelector("#form").classList.remove("d-none")
 })
 
-function createNewBook() {
+function createNewBook(book, index) {
   const AllBooks = document.createElement("div");
-  AllBooks.classList.add("bg-dark rounded"); 
+  AllBooks.classList.add("card");
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body")
+  AllBooks.appendChild(cardBody)
+
+
+  const cardTitle = document.createElement("h5")
+  cardTitle.textContent = `${book.title}`
+  cardTitle.classList.add("card-title");
+  cardBody.appendChild(cardTitle);
+
+  const author = document.createElement("h6");
+  author.textContent = `${book.author}`;
+  author.classList.add("card-subtitle mb-2 text-muted");
+  cardBody.appendChild(author);
+
+
 }
 
 form.addEventListener('submit', addBookToLibrary)
