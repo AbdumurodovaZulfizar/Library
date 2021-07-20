@@ -20,27 +20,28 @@ button.addEventListener('click', (e) => {
   document.querySelector('#form').classList.remove('d-none');
 });
 
-function updateBookList() {
-  display.innerHTML = '';
-  bookArray.forEach((book, index) => createNewBook(book, index));
-}
-
-const DeleteBook = (e) => {
-  const item = e.target;
-  const index = item.getAttribute('data-index');
-  bookArray.splice(index, 1);
-  updateBookList();
-};
-
-const EndBook = (e) => {
-  const item = e.target;
-  const index = item.getAttribute('data-index');
-  const book = bookArray[index];
-  book.status = !book.status;
-  updateBookList();
-};
+// function updateBookList() {
+//   display.innerHTML = '';
+//   bookArray.forEach((book, index) => createNewBook(book, index));
+// }
 
 function createNewBook(book, index) {
+  const DeleteBook = (e) => {
+    const item = e.target;
+    const index = item.getAttribute('data-index');
+    bookArray.splice(index, 1);
+    display.innerHTML = '';
+    bookArray.forEach((book, index) => createNewBook(book, index));
+  };
+
+  const EndBook = (e) => {
+    const item = e.target;
+    const index = item.getAttribute('data-index');
+    const book = bookArray[index];
+    book.status = !book.status;
+    display.innerHTML = '';
+    bookArray.forEach((book, index) => createNewBook(book, index));
+  };
   const AllBooks = document.createElement('div');
   AllBooks.classList.add('card');
   const cardBody = document.createElement('div');
@@ -92,7 +93,8 @@ const addBookToLibrary = (e) => {
       read.chacked,
     );
     bookArray.push(book);
-    updateBookList();
+    display.innerHTML = '';
+    bookArray.forEach((book, index) => createNewBook(book, index));
     form.reset();
   }
 };
