@@ -25,21 +25,20 @@ function updateBookList() {
   bookArray.forEach((book, index) => createNewBook(book, index));
 }
 
-
-DeleteBook = e => {
+const DeleteBook = (e) => {
   const item = e.target;
   const index = item.getAttribute('data-index');
   bookArray.splice(index, 1);
   updateBookList();
-}
+};
 
-EndBook = e => {
+const EndBook = (e) => {
   const item = e.target;
   const index = item.getAttribute('data-index');
   const book = bookArray[index];
   book.status = !book.status;
   updateBookList();
-}
+};
 
 function createNewBook(book, index) {
   const AllBooks = document.createElement('div');
@@ -81,7 +80,7 @@ function createNewBook(book, index) {
   deletebutton.addEventListener('click', DeleteBook);
 }
 
-addBookToLibrary = e => {
+const addBookToLibrary = (e) => {
   e.preventDefault();
   if (bookname.value === '' || author.value === '' || pages.value === '') {
     alert('Fill All Fields');
@@ -96,6 +95,6 @@ addBookToLibrary = e => {
     updateBookList();
     form.reset();
   }
-}
+};
 
 form.addEventListener('submit', addBookToLibrary);
