@@ -46,7 +46,7 @@ function createNewBook(book, index) {
   const endbutton = document.createElement("button");
   endbutton.classList.add("btn");
   endbutton.setAttribute("data-index", index);
-  endbutton.innerHTML = book.status ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
+  endbutton.innerText = book.status ? 'Readed' : 'Unreaded';
   cardBody.appendChild(endbutton);
 
   const deletebutton = document.createElement("button");
