@@ -20,21 +20,20 @@ button.addEventListener('click', (e) => {
   document.querySelector('#form').classList.remove('d-none');
 });
 
-/* eslint-disable no-use-before-define */
 function updateBookList() {
   display.innerHTML = '';
   bookArray.forEach((book, index) => createNewBook(book, index));
 }
-/* eslint-enable no-use-before-define */
 
-function DeleteBook(e) {
+
+DeleteBook = e => {
   const item = e.target;
   const index = item.getAttribute('data-index');
   bookArray.splice(index, 1);
   updateBookList();
 }
 
-function EndBook(e) {
+EndBook = e => {
   const item = e.target;
   const index = item.getAttribute('data-index');
   const book = bookArray[index];
@@ -82,7 +81,7 @@ function createNewBook(book, index) {
   deletebutton.addEventListener('click', DeleteBook);
 }
 
-function addBookToLibrary(e) {
+addBookToLibrary = e => {
   e.preventDefault();
   if (bookname.value === '' || author.value === '' || pages.value === '') {
     alert('Fill All Fields');
