@@ -25,7 +25,7 @@ function createNewBook(book, index) {
   AllBooks.classList.add("card");
   const cardBody = document.createElement("div");
   cardBody.classList.add("card-body")
-  AllBooks.appendChild(cardBody)
+  
 
 
   const cardTitle = document.createElement("h5")
@@ -35,9 +35,32 @@ function createNewBook(book, index) {
 
   const author = document.createElement("h6");
   author.textContent = `${book.author}`;
-  author.classList.add("card-subtitle mb-2 text-muted");
+  author.classList.add("card-subtitle");
   cardBody.appendChild(author);
 
+  const pages = document.createElement("h6");
+  pages.textContent = `${book.pages}`;
+  pages.classList.add("card-subtitle");
+  cardBody.appendChild(pages);
+
+  const endbutton = document.createElement("button");
+  endbutton.classList.add("btn");
+  endbutton.setAttribute("data-index", index);
+  endbutton.innerHTML = book.status ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
+  cardBody.appendChild(endbutton);
+
+  const deletebutton = document.createElement("button");
+  deletebutton.classList.add("btn");
+  deletebutton.setAttribute("data-index", index);
+  deletebutton.innerHTML = '<i class="fas fa-trash"></i>';
+  cardBody.appendChild(deletebutton);
+
+  AllBooks.appendChild(cardBody);
+  display.appendChild(AllBooks);
+
+
+  endbutton.addEventListener("click", EndBook);
+  deletebutton.addEventListener("click", DeleteBook);
 
 }
 
@@ -60,9 +83,25 @@ function addBookToLibrary(e) {
       author.value,
       pages.value,
       read.chacked
-    ),
+    );
     bookArray.push(book);
     updateBookList();
-    form.reset
+    form.reset()
   }
+}
+
+
+function DeleteBook(e) {
+  const item = e.target;
+  const index = item.getAttribute("data-index");
+  bookArray.splice(index, 1);
+  updateBookList();
+}
+
+function EndBook(e) {
+  const item = e.target;
+  const index = item.getAttribute("data-index");
+  const book = bookArray[index];
+  book.status = !book.status;
+  updateBookList();
 }
