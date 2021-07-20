@@ -20,11 +20,6 @@ button.addEventListener('click', (e) => {
   document.querySelector('#form').classList.remove('d-none');
 });
 
-// function updateBookList() {
-//   display.innerHTML = '';
-//   bookArray.forEach((book, index) => createNewBook(book, index));
-// }
-
 function createNewBook(book, index) {
   const DeleteBook = (e) => {
     const item = e.target;
