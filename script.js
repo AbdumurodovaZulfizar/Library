@@ -1,10 +1,10 @@
 let bookArray = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, status = false) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.status = false;
+  this.status = status;
 }
 
 let button = document.querySelector("#newbook");
@@ -12,6 +12,8 @@ let bookname = document.querySelector("#bookName");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
 let form = document.querySelector("#form");
+let read = document.getElementById("readBookCheck");
+let display = document.querySelector('#display')
 
 button.addEventListener( "click", (e)=> {
   e.preventDefault();
@@ -25,21 +27,25 @@ function createNewBook() {
 form.addEventListener('submit', addBookToLibrary)
 
 
+function updateBookList() {
+  display.innerHTML= "";
+  bookArray.forEach((book, index) => createNewBook(book, index));
+}
+
 function addBookToLibrary(e) {
   e.preventDefault()
   if (bookname.value == "" || author.value == "" || pages.value == ""){
     alert("Fill All Fields");
   }
   else {
-    let new_book = {};
-    new_book.name = bookname.value;
-    new_book.auhtor = author.value;
-    new_book.pages = pages.value;
-    console.log(new_book);
-    bookArray.push(new_book);
+    const book = new Book(
+      bookname.value,
+      author.value,
+      pages.value,
+      read.chacked
+    ),
+    bookArray.push(book);
+    updateBookList();
+    form.reset
   }
 }
-
-const diplayBook = document.createElement('div')
-let display = document.querySelector('#display')
-display.appendChild(displayBook)
