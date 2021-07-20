@@ -4,6 +4,7 @@ function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.status = false;
 }
 
 let button = document.querySelector("#newbook");
@@ -31,14 +32,14 @@ function addBookToLibrary(e) {
   }
   else {
     let new_book = {};
-    console.log(new_book)
     new_book.name = bookname.value;
     new_book.auhtor = author.value;
     new_book.pages = pages.value;
     console.log(new_book);
-    bookname.push(new_book);
-    form.submit(); // Submit the form
-   form.reset();  // Reset all form data
-   return false;
+    bookArray.push(new_book);
   }
 }
+
+const diplayBook = document.createElement('div')
+let display = document.querySelector('#display')
+display.appendChild(displayBook)
