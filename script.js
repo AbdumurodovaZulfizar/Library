@@ -21,7 +21,8 @@ button.addEventListener( "click", (e)=> {
 })
 
 function createNewBook() {
-
+  const AllBooks = document.createElement("div");
+  AllBooks.classList.add("bg-dark rounded"); 
 }
 
 form.addEventListener('submit', addBookToLibrary)
