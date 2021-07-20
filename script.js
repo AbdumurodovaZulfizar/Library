@@ -15,7 +15,7 @@ let form = document.querySelector("#form");
 let read = document.getElementById("readBookCheck");
 let display = document.querySelector('#display')
 
-button.addEventListener( "click", (e)=> {
+button.addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector("#form").classList.remove("d-none")
 })
@@ -25,7 +25,7 @@ function createNewBook(book, index) {
   AllBooks.classList.add("card");
   const cardBody = document.createElement("div");
   cardBody.classList.add("card-body")
-  
+
 
 
   const cardTitle = document.createElement("h5")
@@ -68,16 +68,15 @@ form.addEventListener('submit', addBookToLibrary)
 
 
 function updateBookList() {
-  display.innerHTML= "";
+  display.innerHTML = "";
   bookArray.forEach((book, index) => createNewBook(book, index));
 }
 
 function addBookToLibrary(e) {
   e.preventDefault()
-  if (bookname.value == "" || author.value == "" || pages.value == ""){
+  if (bookname.value == "" || author.value == "" || pages.value == "") {
     alert("Fill All Fields");
-  }
-  else {
+  } else {
     const book = new Book(
       bookname.value,
       author.value,
