@@ -1,10 +1,12 @@
 const bookArray = [];
 
-function Book(title, author, pages, status = false) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
+class Book {
+  constructor(title, author, pages, status = false) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
 }
 
 const button = document.querySelector('#newbook');
